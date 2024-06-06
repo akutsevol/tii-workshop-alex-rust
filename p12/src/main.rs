@@ -22,6 +22,8 @@ fn main() {
 
 pub fn bar(a: u64) -> u64 { a as u64 }
 
+fn foo2() {}
+
 fn print_num(string_number: &str) {
     match string_number.parse::<i32>() {
         Ok(number)  => println!("Ваше число – {}", number),
