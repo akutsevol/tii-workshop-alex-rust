@@ -65,7 +65,7 @@ fn test_scope() {
     // println!("other {:?}", other); 
 } 
 
-fn main () {
+fn test_threads() {
     let buf = vec!(1u32, 2, 3);
 
     let res = std::thread::scope(|s| {
@@ -85,7 +85,10 @@ fn main () {
     });
 
     println!("{res}");
+}
 
+fn main () {
+    test_threads();
     computing_the_dot_product_of_two_large_vectors();
     processing_large_files();
     test_scope();
