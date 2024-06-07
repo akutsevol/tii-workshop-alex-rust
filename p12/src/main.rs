@@ -1,19 +1,11 @@
-use std::fs::File;
-use std::io::ErrorKind;
+use std::time::Duration;
 
 fn main () {
-    let greeting_file_result = File::open("hello.txt");
-    #[warn(unused_variables)]
-    let greeting_file = match greeting_file_result {
-        Ok(file) => file,
-        Err(error) => match error.kind() {
-            ErrorKind::NotFound => match File::create("hello.txt") {
-                Ok(fs) => fs,
-                Err(e) => panic!("Problem creating file {:?}", e),
-            },
-            other_error => {
-                panic!("Problem opening file: {:?}", other_error);
-            }
-        }
-    };
+    let h = std::thread::spawn(|| {
+        println!("Hi from thread!");
+        std::thread::sleep(Duration::from_secs(3));
+        42u32
+    });
+    let res = h.join().unwrap();
+    println!("{:?}", res);
 }
