@@ -1,6 +1,8 @@
 
 //use std::env;
 
+mod bmod;
+
 pub fn foo(mut a: i32, lim: i32) {
     while a < lim {
         a += 1;
@@ -18,6 +20,7 @@ fn main() {
     foo(1, 10);
     print_num("8");
     print_num("n");
+    println!("{}", bmod::add1(5));
 }
 
 pub fn bar(a: u64) -> u64 { a as u64 }
